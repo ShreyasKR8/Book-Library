@@ -18,11 +18,41 @@
             </tr>
         </thead>
         <tbody>
-
+            
         </tbody>
     </table>
-    <button class="add-book">Add new book</button>
-    
+    <dialog>
+        <form>
+            <button value="cancel" formmethod="dialog">X</button>
+            <label for="title">
+                Title:
+                <input type="text" id="title" value="The Hobbit">
+            </label>
+            <label for="author">
+                Author:
+                <input type="text" id="author" value="J.R.R Tolkein">
+            </label>
+            <label for="pages">
+                Pages:
+                <input type="number" id="pages" value="295">
+            </label>
+            <fieldset>
+                <legend>Read?: </legend>
+                <ul class="radio-list">
+                    <li>
+                        <label for="Yes">Yes</label>
+                        <input type="radio" id="Yes" name="hasRead" checked>
+                    </li>
+                    <li>
+                        <label for="No">No</label>
+                        <input type="radio" id="No" name="hasRead">
+                    </li>
+                </ul>
+            </fieldset>
+            <button class="confirm-btn" value="default">Add</button>
+        </form>
+    </dialog>
+    <button class="add-book">Add book</button>
     <script src="library.js"></script>
 </body>
 </html>

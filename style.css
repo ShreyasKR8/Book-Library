@@ -21,10 +21,32 @@ th {
     color: white;
     background-color: rgb(0, 0, 0);
     border: none;
+    border-radius: 4px;
     padding: 10px 30px;
     transition: transform 300ms;
 }
 
 .add-book:hover {
     transform: scaleX(1.02) scaleY(1.02);
+}
+
+dialog {
+    border: none;
+    border-radius: 8px;
+    padding: 20px;
+    margin: auto auto;
+    max-width: 250px;
+}
+
+input {
+    margin: 10px;
+}
+
+fieldset {
+    border: none;
+}
+
+.radio-list {
+    list-style: none;
+    display: flex;
 }

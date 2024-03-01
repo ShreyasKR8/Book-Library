@@ -1,5 +1,9 @@
 
 const table = document.querySelector("tbody");
+const addBookBtn = document.querySelector(".add-book");
+const dialog = document.querySelector("dialog");
+const confirmBtn = document.querySelector(".confirm-btn");
+
 let bookId = 0;
 
 const myLibrary = [];
@@ -44,7 +48,23 @@ function addBookToLibrary(title, author, pages, read) {
     displayBook();
 }
 
-addBookToLibrary("The Hobbit", "J.R.R Tolkein", 295, "not read yet");
-addBookToLibrary("A Game of Thrones", "George R R Martin", 694, "not read yet");
-addBookToLibrary("The Last Wish", "Andrzej Sapkowski", 400, "read");
-addBookToLibrary("Swords of Destiny", "Andrzej Sapkowski", 455, "read");
+// addBookToLibrary("The Hobbit", "J.R.R Tolkein", 295, "not read yet");
+addBookToLibrary("A Game of Thrones", "George R R Martin", 694, "Yes");
+addBookToLibrary("The Last Wish", "Andrzej Sapkowski", 400, "No");
+// addBookToLibrary("Swords of Destiny", "Andrzej Sapkowski", 455, "read");
+
+addBookBtn.addEventListener("click", () => {
+    dialog.showModal();
+});
+
+confirmBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    
+    const title = document.getElementById("title").value;
+    const author = document.getElementById("author").value;
+    const pages = document.getElementById("pages").value;
+    const read = document.querySelector("input[type=radio]:checked").id;
+    addBookToLibrary(title, author, pages, read);
+    
+    dialog.close();
+});
