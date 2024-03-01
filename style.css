@@ -3,3 +3,28 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+table {
+    border-collapse: collapse;
+    margin: 40px auto;
+}
+
+td,
+th {
+    border: 1px solid grey;
+    padding: 15px 50px;
+}
+
+.add-book {
+    display: block;
+    margin: 0 auto;
+    color: white;
+    background-color: rgb(0, 0, 0);
+    border: none;
+    padding: 10px 30px;
+    transition: transform 300ms;
+}
+
+.add-book:hover {
+    transform: scaleX(1.02) scaleY(1.02);
+}
