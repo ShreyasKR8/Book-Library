@@ -7,20 +7,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <table>
-        <thead>
-            <tr>
-                <td style="padding: 0px 20px;">&nbsp;</td>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Pages</th>
-                <th>Has Read</th>
-            </tr>
-        </thead>
-        <tbody>
-            
-        </tbody>
-    </table>
     <dialog>
         <form>
             <button value="cancel" formmethod="dialog">X</button>
@@ -36,23 +22,28 @@
                 Pages:
                 <input type="number" id="pages" value="295">
             </label>
-            <fieldset>
-                <legend>Read?: </legend>
-                <ul class="radio-list">
-                    <li>
-                        <label for="Yes">Yes</label>
-                        <input type="radio" id="Yes" name="hasRead" checked>
-                    </li>
-                    <li>
-                        <label for="No">No</label>
-                        <input type="radio" id="No" name="hasRead">
-                    </li>
-                </ul>
-            </fieldset>
+            <label for="Yes">Read?: </label>
+            <input type="checkbox" id="Yes" name="hasRead">
             <button class="confirm-btn" value="default">Add</button>
         </form>
     </dialog>
     <button class="add-book">Add book</button>
+    <div class="book-cards">
+        <!-- <div class="card">
+            <img src="acodyssey.jpg">
+            <h4>The Hobbit</h4>
+            <p> by J.R.R Tolkein</p>
+            <p>395 pages</p>
+            <p>Read</p>
+        </div>
+        <div class="card">
+            <img src="wolvie.jpg">
+            <h4>A Game of Thrones</h4>
+            <p>by George R R Martin</p>
+            <p>395 pages</p>
+            <p>Read</p>
+        </div> -->
+    </div>
     <script src="library.js"></script>
 </body>
 </html>

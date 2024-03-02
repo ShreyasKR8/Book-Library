@@ -3,6 +3,7 @@ const table = document.querySelector("tbody");
 const addBookBtn = document.querySelector(".add-book");
 const dialog = document.querySelector("dialog");
 const confirmBtn = document.querySelector(".confirm-btn");
+const bookCards = document.querySelector(".book-cards");
 
 let bookId = 0;
 
@@ -18,40 +19,65 @@ function Book(title, author, pages, hasRead) {
 
 function displayBook() {
     let newBook = myLibrary[myLibrary.length - 1];
-    const newRow = table.insertRow();
 
-    const newRowNo = newRow.insertCell();
     let rowNo = document.createTextNode(`${newBook.id}`);
-    newRowNo.appendChild(rowNo);
-
-    const newData1 = newRow.insertCell();
     let title = document.createTextNode(`${newBook.title}`);
-    newData1.appendChild(title);
-    
-    const newData2 = newRow.insertCell();
-    let author = document.createTextNode(`${newBook.author}`);
-    newData2.appendChild(author);
-    
-    const newData3 = newRow.insertCell();
-    let pages = document.createTextNode(`${newBook.pages}`);
-    newData3.appendChild(pages);
-    
-    const newData4 = newRow.insertCell();
-    let hasRead = document.createTextNode(`${newBook.hasRead}`);
-    newData4.appendChild(hasRead);
+    let author = document.createTextNode(`by ${newBook.author}`);
+    let pages = document.createTextNode(`${newBook.pages} pages`);
+    let hasRead = newBook.hasRead;
+
+    /* cards */
+    const cardDiv = document.createElement("div");
+    cardDiv.classList.add("card");
+
+    const imgEl = document.createElement("img");
+    cardDiv.appendChild(imgEl);
+
+    const titleEl = document.createElement("h4");
+    titleEl.textContent = title.textContent;
+    cardDiv.appendChild(titleEl);
+
+    const authorEl = document.createElement("p");
+    authorEl.textContent = author.textContent;
+    cardDiv.appendChild(authorEl);
+
+    const pagesEl = document.createElement("p");
+    pagesEl.textContent = pages.textContent;
+    cardDiv.appendChild(pagesEl);
+
+    const hasReadEl = document.createElement("input");
+    hasReadEl.setAttribute("type", "checkbox");
+    hasReadEl.setAttribute("id", `read-check-${newBook.id}`);
+    const hasReadLabel = document.createElement("label");
+    hasReadLabel.setAttribute("for", `read-check-${newBook.id}`);
+    hasReadEl.checked = hasRead;
+    hasReadLabel.textContent = "Read";
+    hasReadLabel.appendChild(hasReadEl);
+    cardDiv.appendChild(hasReadLabel);
+
+    const removeBookBtn = document.createElement("button");
+    removeBookBtn.classList.add(`remove-card-${newBook.id}`);
+    removeBookBtn.innerHTML = "Remove";
+    removeBookBtn.addEventListener("click", () => {
+        bookCards.removeChild(cardDiv);
+    })
+    cardDiv.appendChild(removeBookBtn);
+    console.log(removeBookBtn)
+
+    bookCards.appendChild(cardDiv);
 }
 
+function addBookToLibrary(title, author, pages, hasRead) {
+    const newBook = new Book(title, author, pages, hasRead);
 
-function addBookToLibrary(title, author, pages, read) {
-    const newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
     displayBook();
 }
 
-// addBookToLibrary("The Hobbit", "J.R.R Tolkein", 295, "not read yet");
-addBookToLibrary("A Game of Thrones", "George R R Martin", 694, "Yes");
-addBookToLibrary("The Last Wish", "Andrzej Sapkowski", 400, "No");
-// addBookToLibrary("Swords of Destiny", "Andrzej Sapkowski", 455, "read");
+addBookToLibrary("The Hobbit", "J.R.R Tolkein", 295, false);
+// addBookToLibrary("A Game of Thrones", "George R R Martin", 694, true);
+// addBookToLibrary("The Last Wish", "Andrzej Sapkowski", 400, false);
+// addBookToLibrary("Swords of Destiny", "Andrzej Sapkowski", 455, true);
 
 addBookBtn.addEventListener("click", () => {
     dialog.showModal();
@@ -63,8 +89,8 @@ confirmBtn.addEventListener("click", (event) => {
     const title = document.getElementById("title").value;
     const author = document.getElementById("author").value;
     const pages = document.getElementById("pages").value;
-    const read = document.querySelector("input[type=radio]:checked").id;
-    addBookToLibrary(title, author, pages, read);
+    const hasRead = document.querySelector("input[type=checkbox").checked;
+    addBookToLibrary(title, author, pages, hasRead);
     
     dialog.close();
 });
