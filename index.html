@@ -8,42 +8,41 @@
 </head>
 <body>
     <dialog>
-        <form>
-            <button value="cancel" formmethod="dialog">X</button>
-            <label for="title">
-                Title:
-                <input type="text" id="title" value="The Hobbit">
-            </label>
-            <label for="author">
-                Author:
-                <input type="text" id="author" value="J.R.R Tolkein">
-            </label>
-            <label for="pages">
-                Pages:
-                <input type="number" id="pages" value="295">
-            </label>
-            <label for="Yes">Read?: </label>
-            <input type="checkbox" id="Yes" name="hasRead">
-            <button class="confirm-btn" value="default">Add</button>
+        <form class="book-form">
+            <header>
+                <h2>Add new book</h2>
+                <button class="close-dialog-btn" value="cancel" formmethod="dialog">&times;</button>
+            </header>
+            <ul class="book-form-main">
+                <li>
+                    <label for="title">Title</label>
+                    <input type="text" id="title" value="The Hobbit">
+                </li>
+                <li>
+                    <label for="author">Author</label>
+                    <input type="text" id="author" value="J.R.R Tolkein">
+                </li>
+                <li>
+                    <label for="pages">Number of Pages</label>
+                    <input type="number" id="pages" value="295">
+                </li>
+                <li>
+                    <label for="img-url">Cover Image URL</label>
+                    <input type="url" id="img-url" value="">
+                </li>
+                <li class="read-check-li-item">
+                    <label for="read-check">Read it yet?</label>
+                    <input type="checkbox" id="read-check">
+                </li>
+            </ul>
+            <button class="confirm-dialog-btn" value="default">Add book</button>
         </form>
     </dialog>
-    <button class="add-book">Add book</button>
+    <button class="add-book-btn">Add book</button>
     <div class="book-cards">
-        <!-- <div class="card">
-            <img src="acodyssey.jpg">
-            <h4>The Hobbit</h4>
-            <p> by J.R.R Tolkein</p>
-            <p>395 pages</p>
-            <p>Read</p>
-        </div>
-        <div class="card">
-            <img src="wolvie.jpg">
-            <h4>A Game of Thrones</h4>
-            <p>by George R R Martin</p>
-            <p>395 pages</p>
-            <p>Read</p>
-        </div> -->
+
     </div>
+
     <script src="library.js"></script>
 </body>
 </html>

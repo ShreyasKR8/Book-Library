@@ -1,8 +1,7 @@
 
-const table = document.querySelector("tbody");
-const addBookBtn = document.querySelector(".add-book");
+const addBookBtn = document.querySelector(".add-book-btn");
 const dialog = document.querySelector("dialog");
-const confirmBtn = document.querySelector(".confirm-btn");
+const confirmBtn = document.querySelector(".confirm-dialog-btn");
 const bookCards = document.querySelector(".book-cards");
 
 let bookId = 0;
@@ -45,15 +44,18 @@ function displayBook() {
     pagesEl.textContent = pages.textContent;
     cardDiv.appendChild(pagesEl);
 
-    const hasReadEl = document.createElement("input");
-    hasReadEl.setAttribute("type", "checkbox");
-    hasReadEl.setAttribute("id", `read-check-${newBook.id}`);
+    const hasReadDiv = document.createElement("div");
+    hasReadDiv.classList.add("read-check-div");
+    const hasReadInput = document.createElement("input");
+    hasReadInput.setAttribute("type", "checkbox");
+    hasReadInput.setAttribute("id", `read-check-${newBook.id}`);
     const hasReadLabel = document.createElement("label");
     hasReadLabel.setAttribute("for", `read-check-${newBook.id}`);
-    hasReadEl.checked = hasRead;
+    hasReadInput.checked = hasRead;
     hasReadLabel.textContent = "Read";
-    hasReadLabel.appendChild(hasReadEl);
-    cardDiv.appendChild(hasReadLabel);
+    hasReadDiv.appendChild(hasReadLabel);
+    hasReadDiv.appendChild(hasReadInput);
+    cardDiv.appendChild(hasReadDiv);
 
     const removeBookBtn = document.createElement("button");
     removeBookBtn.classList.add(`remove-card-${newBook.id}`);
