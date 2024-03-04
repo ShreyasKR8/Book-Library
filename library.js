@@ -16,16 +16,25 @@ function Book(title, author, pages, hasRead) {
     this.hasRead = hasRead;
 }
 
+Book.prototype.changeReadStatus = function () {
+    this.hasRead = !this.hasRead;
+}
+
 function displayBook() {
     let newBook = myLibrary[myLibrary.length - 1];
 
-    let rowNo = document.createTextNode(`${newBook.id}`);
     let title = document.createTextNode(`${newBook.title}`);
     let author = document.createTextNode(`by ${newBook.author}`);
     let pages = document.createTextNode(`${newBook.pages} pages`);
     let hasRead = newBook.hasRead;
 
     /* cards */
+    const bookCard = createBookCard(title, author, pages, hasRead, newBook);
+
+    bookCards.appendChild(bookCard);
+}
+
+function createBookCard(title, author, pages, hasRead, newBook) {
     const cardDiv = document.createElement("div");
     cardDiv.classList.add("card");
 
@@ -56,17 +65,29 @@ function displayBook() {
     hasReadDiv.appendChild(hasReadLabel);
     hasReadDiv.appendChild(hasReadInput);
     cardDiv.appendChild(hasReadDiv);
+    // change read status
+    hasReadInput.addEventListener("change", () => {
+        newBook.changeReadStatus();
+    });
+    console.log(myLibrary);
 
     const removeBookBtn = document.createElement("button");
     removeBookBtn.classList.add(`remove-card-${newBook.id}`);
+    removeBookBtn.setAttribute("data-book-id", `${myLibrary.length - 1}`);
+    console.log(removeBookBtn);
     removeBookBtn.innerHTML = "Remove";
-    removeBookBtn.addEventListener("click", () => {
+    removeBookBtn.addEventListener("click", (event) => {
         bookCards.removeChild(cardDiv);
-    })
+        deleteBookFromLibrary(event.target);
+    });
     cardDiv.appendChild(removeBookBtn);
-    console.log(removeBookBtn)
 
-    bookCards.appendChild(cardDiv);
+    return cardDiv;
+}
+
+function deleteBookFromLibrary(removeBookBtn) {
+    let bookId = removeBookBtn.getAttribute("data-book-id");
+    myLibrary.splice(bookId, 1);
 }
 
 function addBookToLibrary(title, author, pages, hasRead) {
