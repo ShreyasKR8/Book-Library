@@ -1,7 +1,8 @@
 
 const addBookBtn = document.querySelector(".add-book-btn");
 const dialog = document.querySelector("dialog");
-const confirmBtn = document.querySelector(".confirm-dialog-btn");
+const confirmDialogBtn = document.querySelector(".confirm-dialog-btn");
+const closeDialogBtn = document.querySelector(".close-dialog-btn");
 const bookCards = document.querySelector(".book-cards");
 
 let bookId = 0;
@@ -106,7 +107,7 @@ addBookBtn.addEventListener("click", () => {
     dialog.showModal();
 });
 
-confirmBtn.addEventListener("click", (event) => {
+confirmDialogBtn.addEventListener("click", (event) => {
     event.preventDefault();
     
     const title = document.getElementById("title").value;
@@ -117,3 +118,7 @@ confirmBtn.addEventListener("click", (event) => {
     
     dialog.close();
 });
+
+closeDialogBtn.addEventListener("click", () => {
+    dialog.close();
+})
