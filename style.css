@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: Cambria, 'Times New Roman', serif;
+}
+
 .body-header h1 {
     width: fit-content;
     margin: 20px auto;
