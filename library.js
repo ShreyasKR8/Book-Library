@@ -59,11 +59,11 @@ function createBookCard(bookID, bookTitle, bookAuthor, bookPages, hasReadBook, b
     cardDiv.appendChild(titleEl);
 
     const authorEl = document.createElement("p");
-    authorEl.textContent = bookAuthor;
+    authorEl.textContent = "by " + bookAuthor;
     cardDiv.appendChild(authorEl);
 
     const pagesEl = document.createElement("p");
-    pagesEl.textContent = bookPages;
+    pagesEl.textContent = bookPages + " pages";
     cardDiv.appendChild(pagesEl);
 
     const hasReadDiv = document.createElement("div");
