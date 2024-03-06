@@ -105,7 +105,7 @@ input {
 
 .book-cards {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(auto-fit, 300px);
 }
 
 .card {
