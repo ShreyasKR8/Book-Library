@@ -92,6 +92,15 @@ input:not(input[type="checkbox"]) {
     outline: none;
 }
 
+input:not(input[type="checkbox"]):hover {
+    border: 0.17em solid rgb(138, 138, 250);
+}
+
+input:not(input[type="checkbox"]):focus {
+    border: 0.2em solid rgb(138, 138, 250);
+    
+}
+
 .book-form .confirm-dialog-btn {
     width: fit-content;
     padding: 10px 20px;
