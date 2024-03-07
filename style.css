@@ -82,7 +82,7 @@ dialog header {
     gap: 10px;
 }
 
-input {
+input:not(input[type="checkbox"]) {
     margin-top: 5px;
     padding-left: 5px;
     font-size: 14px;
@@ -148,7 +148,7 @@ input {
     border-radius: 7px;
     background-color: rgb(140, 140, 255);
     width: 100px;
-    margin: 0 auto;
+    margin: 20px auto;
     padding: 10px;
 }
 
@@ -167,5 +167,32 @@ input {
 
 .card p,
 h4 {
-    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    position: relative;
+    width: 18px;
+    height: 18px;
+    font-size: 14px;
+    border: 0.12em solid black;
+    border-radius: 0.3em;
+}
+
+input[type="checkbox"]::after {
+    position: absolute;
+    left: 1px;
+    top: 1px;
+    width: 12px;
+    height: 12px;
+    content: "";
+    box-shadow: inset 1em 1em rgb(19, 159, 19);
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);  
+}
+
+input[type="checkbox"]:checked::after {
+    transform: scale(1) ;
 }
