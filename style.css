@@ -1,3 +1,7 @@
+:root {
+    --book-card-width: 250px;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -118,20 +122,22 @@ input:not(input[type="checkbox"]):focus {
 
 .book-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 300px);
+    grid-template-columns: repeat(auto-fit, var(--book-card-width));
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
 }
 
 .card {
     display: flex; 
     flex-direction: column;
-    width: 250px;
+    width: var(--book-card-width);
+    padding: 10px 20px;
+    margin: 0 auto;
+    text-align: center;
     box-shadow: 5px 5px 10px rgb(202, 202, 202);
     border-radius: 7px;
-    padding: 10px 20px;
     border: 4px solid rgb(237, 143, 237);
-    /* background-color: rgb(237, 237, 237); */
-    margin: 30px;
-    text-align: center;
     transition: transform 300ms;
 }
 
