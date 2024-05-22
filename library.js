@@ -10,18 +10,24 @@ let bookID = 0;
 
 const myLibrary = [];
 
-function Book(title, author, pages, hasRead, imgURL) {
-    this.id = ++bookID;
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.hasRead = hasRead;
-    this.imgURL = imgURL;
+class Book {
+    constructor(title, author, pages, hasRead, imgURL) {
+        this.id = ++bookID;
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.hasRead = hasRead;
+        this.imgURL = imgURL;
+    }
+
+    changeReadStatus() {
+        this.hasRead = !this.hasRead;
+    }
 }
 
-Book.prototype.changeReadStatus = function () {
-    this.hasRead = !this.hasRead;
-}
+// Book.prototype.changeReadStatus = function () {
+//     this.hasRead = !this.hasRead;
+// }
 
 function setBackgroundColor(cardDiv, hasReadInput) {
     if(hasReadInput.checked)
