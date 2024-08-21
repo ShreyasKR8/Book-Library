@@ -125,6 +125,17 @@ function addBookToLibrary(title, author, pages, hasRead, imgURL) {
     displayBook();
 }
 
+function areInputsValid(...inputs) {
+    for(const input of inputs) {
+        if(input.validity.valueMissing) {
+            input.setCustomValidity("Please fill this field");
+            input.reportValidity();
+            return false;
+        }
+    }
+    return true;
+}
+
 addBookToLibrary("The Hobbit", "J.R.R Tolkein", 295, false, "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1546071216l/5907.jpg");
 // addBookToLibrary("A Game of Thrones", "George R. R. Martin", 694, true, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkmk8Bq5po0bxr1NZCkmXLz1YXGH6d4SFqruc2GOsyuwGYR0dw");
 // addBookToLibrary("The Last Wish", "Andrzej Sapkowski", 400, false, "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1529591917i/40603587.jpg");
@@ -137,12 +148,16 @@ addBookBtn.addEventListener("click", () => {
 confirmDialogBtn.addEventListener("click", (event) => {
     event.preventDefault();
     
-    const title = document.getElementById("title").value;
-    const author = document.getElementById("author").value;
+    const titleInput = document.getElementById("title");
+    const authorInput = document.getElementById("author");
     const pages = document.getElementById("pages").value;
     const hasRead = document.querySelector("input[type=checkbox]").checked;
     const imgURL = document.getElementById("img-url").value;
-    addBookToLibrary(title, author, pages, hasRead, imgURL);
+
+    if(!areInputsValid(titleInput, authorInput)) {
+        return;
+    }
+    addBookToLibrary(titleInput.value, authorInput.value, pages, hasRead, imgURL);
 
     bookForm.reset();
     dialog.close();
